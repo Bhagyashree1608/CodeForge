@@ -190,7 +190,7 @@ body {
             <a href="index.php"><i class="bi bi-speedometer2 me-2"></i> Dashboard</a>
             <a href="quiz.php"><i class="bi bi-journal-text me-2"></i> Start Quiz</a>
             <a href="achievment.php"><i class="bi bi-award me-2"></i> Achievements</a>
-            <a href="#"><i class="bi bi-gear me-2"></i> Settings</a>
+          
             <a href="analytics.php"><i class="bi bi-box-arrow-right me-2"></i> Analysis</a>
             <a href="logout.php"><i class="bi bi-box-arrow-right me-2"></i> Logout</a>
         </div>

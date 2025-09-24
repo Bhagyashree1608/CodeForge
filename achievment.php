@@ -42,21 +42,103 @@ $all_badges = [
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <style>
-body { background: #121212; color: #fff; font-family: 'Segoe UI', sans-serif; }
-.main-content { margin-left: 280px; padding: 40px 20px; min-height: 100vh; }
-.card { border-radius: 20px; background: #1f1f1f; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-.progress { height: 25px; border-radius: 12px; background: #333; }
-.progress-bar { background: linear-gradient(90deg, #ff5722, #ffc107); font-weight: bold; text-align: center; transition: width 1s; }
-.badge-container { display: flex; flex-wrap: wrap; gap: 10px; }
-.badge-card { background: #2c2c2c; border-radius: 15px; padding: 15px; display: flex; align-items: center; transition: transform 0.3s; cursor: pointer; opacity:0.5; }
-.badge-card.earned { opacity:1; }
-.badge-card:hover { transform: scale(1.05); }
-.badge-card i { font-size: 2rem; margin-right: 10px; color: #ffcc00; }
-.stats { display: flex; justify-content: space-around; margin-bottom: 20px; }
-.stats div { text-align: center; }
-h3 { text-align: center; margin-bottom: 25px; }
-@media(max-width:992px){ .main-content { margin-left:0; padding:20px 10px; } }
+body { 
+    background: #0d1117; /* darker background for contrast */
+    color: #e1e4e8; /* light text color */
+    font-family: 'Segoe UI', sans-serif; 
+}
+
+.main-content { 
+    margin-left: 280px; 
+    padding: 40px 20px; 
+    min-height: 100vh; 
+}
+
+.card { 
+    border-radius: 20px; 
+    background: #161b22; /* slightly lighter than background for cards */
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6); 
+}
+
+.progress { 
+    height: 25px; 
+    border-radius: 12px; 
+    background: #21262d; /* dark grey for progress bar background */
+}
+
+.progress-bar { 
+    background: linear-gradient(90deg, #0aff99, #00d1ff); /* gradient from green to cyan */
+    font-weight: bold; 
+    text-align: center; 
+    color: #0d1117; /* dark text for contrast on bright bar */
+    transition: width 1s; 
+}
+
+.badge-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+.badge-card { 
+    background: #21262d; /* dark card background */
+    border-radius: 15px; 
+    padding: 15px; 
+    display: flex; 
+    align-items: center; 
+    transition: transform 0.3s; 
+    cursor: pointer; 
+    opacity:0.5; 
+}
+
+.badge-card.earned { 
+    opacity:1; 
+}
+
+.badge-card:hover { 
+    transform: scale(1.05); 
+}
+
+.badge-card i { 
+    font-size: 2rem; 
+    margin-right: 10px; 
+    color: #ffdd57; /* bright yellow icon for badges */
+}
+
+.stats { 
+    display: flex; 
+    justify-content: space-around; 
+    margin-bottom: 20px; 
+}
+
+.stats div { 
+    text-align: center; 
+}
+
+h3 { 
+    text-align: center; 
+    margin-bottom: 25px; 
+    color: #58a6ff; /* bright accent color for title */ 
+}
+
+h5 { 
+    color: #c9d1d9; /* slightly lighter heading color */ 
+}
+
+p, small { 
+    color: #adbac7; /* light grey for smaller text */ 
+}
+
+@media(max-width:992px){ 
+    .main-content { 
+        margin-left:0; 
+        padding:20px 10px; 
+    } 
+}
 </style>
+
 </head>
 <body>
 

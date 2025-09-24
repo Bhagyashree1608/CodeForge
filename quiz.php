@@ -72,22 +72,154 @@ $nextLevelXP = $level * 100;
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <style>
-body { background:#f4f6f8; font-family:sans-serif; }
-.card { border-radius:15px; transition: transform 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-.card:hover { transform: scale(1.02); }
-.option { cursor:pointer; transition: all 0.2s; padding:12px; border-radius:8px; margin:5px 0; background:#eee; font-weight:bold;}
-.option.correct { background:#a6e6a6 !important; }
-.option.wrong { background:#f8a6a6 !important; }
-.option:hover { background:#ddd; }
-#nextBtn { display:none; margin-top:15px; }
-.progress-bar { transition: width 0.5s; font-weight:bold; text-align:center; }
-.timer { font-weight:bold; font-size:1.1em; margin-bottom:10px; }
-.stats span { margin-right:15px; }
-#streak-badges span { margin-right:5px; margin-bottom:5px; }
-.quiz-info { font-weight:bold; font-size:1.1em; }
-.xp-level-bar { margin-bottom:15px; height:25px; border-radius:12px; overflow:hidden; background:#ddd; }
-.xp-level-bar .bar { height:100%; text-align:center; font-weight:bold; line-height:25px; color:#fff; transition: width 0.5s; }
-.bar-success { background:#28a745; }
+
+<style>
+body {
+    background: #1e1e2f;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+/* Card */
+.card {
+    border-radius: 20px;
+    background: linear-gradient(145deg, #2c2c3e, #1b1b2a);
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 40px rgba(0,0,0,0.7);
+}
+
+/* Quiz Info */
+.quiz-info {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+.quiz-info span {
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Stats */
+.stats div {
+    font-size: 1rem;
+    color: #ccc;
+}
+.stats span {
+    font-weight: bold;
+    color: #fff;
+}
+
+/* XP Level Bar */
+.xp-level-bar {
+    margin-bottom: 20px;
+    height: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #2c2c3e;
+}
+.xp-level-bar .bar {
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    line-height: 25px;
+    color: #fff;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    transition: width 0.5s;
+}
+
+/* Badges */
+#streak-badges span {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* Timer */
+.timer {
+    font-weight: bold;
+    font-size: 1.15rem;
+    text-align: right;
+    color: #ffb74d;
+    margin-bottom: 15px;
+}
+
+/* Question */
+#question-text {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Options */
+.option {
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 15px;
+    border-radius: 12px;
+    margin: 8px 0;
+    background: #2c2c3e;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid transparent;
+}
+.option:hover {
+    background: #3e3e5a;
+    transform: scale(1.02);
+}
+.option.correct {
+    background: #28a745 !important;
+    color: #fff;
+}
+.option.wrong {
+    background: #dc3545 !important;
+    color: #fff;
+}
+
+/* Next Button */
+#nextBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+#nextBtn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        padding: 20px;
+    }
+    #question-text {
+        font-size: 1.1rem;
+    }
+    .option {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    #nextBtn {
+        width: 100%;
+    }
+}
+</style>
+
 </style>
 </head>
 <body>
