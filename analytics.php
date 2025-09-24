@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'sidebar.php';  // assuming this outputs the sidebar HTML
 include 'api/db.php';
 
 if(!isset($_SESSION['user_id'])){
@@ -7,84 +8,13 @@ if(!isset($_SESSION['user_id'])){
     exit;
 }
 
-// Logged-in user info
 $stmt = $conn->prepare("SELECT username, profile_pic FROM users WHERE id=?");
 $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 $currentUser = $result->fetch_assoc();
 $stmt->close();
-
-// ----------------------
-// User Engagement Over Time
-// ----------------------
-$userId = $_SESSION['user_id'];
-
-$activityQuery = $conn->prepare("
-    SELECT DATE(attempted_on) as day, COUNT(*) as quizzes, 
-           ROUND(SUM(correct_answers)/SUM(total_questions)*100,2) as accuracy
-    FROM quiz_attempts
-    WHERE user_id = ?
-    GROUP BY day
-    ORDER BY day ASC
-");
-$activityQuery->bind_param("i", $userId);
-$activityQuery->execute();
-$result = $activityQuery->get_result();
-
-$days = [];
-$quizzesPerDay = [];
-$accuracyPerDay = [];
-
-while($row = $result->fetch_assoc()){
-    $days[] = $row['day'];
-    $quizzesPerDay[] = (int)$row['quizzes'];
-    $accuracyPerDay[] = (float)$row['accuracy'];
-}
-$activityQuery->close();
-
-// ----------------------
-// Subject-wise Analysis
-// ----------------------
-$subjectQuery = $conn->prepare("
-    SELECT subject, COUNT(*) as total_attempts,
-           ROUND(SUM(correct_answers)/SUM(total_questions)*100,2) as accuracy
-    FROM quiz_attempts
-    WHERE user_id = ?
-    GROUP BY subject
-");
-$subjectQuery->bind_param("i", $userId);
-$subjectQuery->execute();
-$result = $subjectQuery->get_result();
-
-$subjects = [];
-$subjectAttempts = [];
-$subjectAccuracy = [];
-
-while($row = $result->fetch_assoc()){
-    $subjects[] = $row['subject'];
-    $subjectAttempts[] = (int)$row['total_attempts'];
-    $subjectAccuracy[] = (float)$row['accuracy'];
-}
-$subjectQuery->close();
-
-// ----------------------
-// Top Active Users (7 days)
-// ----------------------
-$leaderboard = [];
-$lbQuery = $conn->query("
-    SELECT u.username, u.profile_pic, COUNT(a.id) as quizzes
-    FROM users u
-    LEFT JOIN quiz_attempts a ON u.id = a.user_id AND a.attempted_on >= DATE_SUB(NOW(), INTERVAL 7 DAY)
-    GROUP BY u.id
-    ORDER BY quizzes DESC
-    LIMIT 10
-");
-while($row = $lbQuery->fetch_assoc()){
-    $leaderboard[] = $row;
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,155 +22,197 @@ while($row = $lbQuery->fetch_assoc()){
 <title>Analytics Dashboard</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/SW/service-worker.js')
+        .then(reg => console.log('Service Worker Registered', reg))
+        .catch(err => console.log('SW registration failed', err));
+    });
+}
+</script>
+
 <style>
-body { background: #1e1e2f; color: #fff; }
-.card { border-radius: 15px; }
-.avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-.table thead { background: #292946; }
-.table tbody tr:nth-child(odd) { background: #2d2d58; }
-.table tbody tr:nth-child(even) { background: #38386b; }
-.table tbody tr.highlight { background: #ff6f61 !important; color: #fff; font-weight: bold; }
-.badge { font-size: 0.8rem; }
+body {
+    background: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+}
+.navbar-custom {
+    background-color: #4e73df;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .btn {
+    color: #fff;
+}
+.card {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+.chart-card {
+    padding: 20px;
+    min-height: 350px;
+}
+.chart-card canvas {
+    max-width: 100%;
+    height: 250px !important;
+}
+h4 {
+    font-weight: 600;
+}
+.main-content {
+    margin-left: 250px; /* adjust according to sidebar width */
+    padding: 20px;
+}
+@media(max-width:768px){
+    .main-content {
+        margin-left:0;
+    }
+}
 </style>
 </head>
 <body>
-<div class="container mt-5">
-    <!-- Header -->
-    <div class="row mb-4">
-        <div class="col-md-12 d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <img src="uploads/<?php echo htmlspecialchars($currentUser['profile_pic']); ?>" class="avatar me-3">
-                <h4>Welcome, <?php echo htmlspecialchars($currentUser['username']); ?>!</h4>
-            </div>
-            <a href="logout.php" class="btn btn-danger">Logout</a>
-        </div>
-    </div>
 
+<!-- Sidebar is included via sidebar.php -->
+
+
+
+<div class="main-content">
     <!-- Engagement Chart -->
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div class="card shadow-lg p-4">
-                <h4 class="mb-3">Your Engagement Over Time</h4>
-                <canvas id="engagementChart" height="250"></canvas>
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card chart-card">
+                <h4 class="mb-3">Engagement Over Time</h4>
+                <canvas id="engagementChart"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- Subject-wise Analysis Chart -->
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div class="card shadow-lg p-4">
-                <h4 class="mb-3">Your Performance by Subject</h4>
-                <canvas id="subjectChart" height="250"></canvas>
+    <div class="row mb-4">
+        <!-- Subject Chart -->
+        <div class="col-lg-6 mb-4">
+            <div class="card chart-card">
+                <h4 class="mb-3">Performance by Subject</h4>
+                <canvas id="subjectChart"></canvas>
             </div>
         </div>
-    </div>
 
-    <!-- Leaderboard -->
-    <div class="row mb-5">
-        <div class="col-md-12">
-            <div class="card shadow-lg p-4">
+        <!-- Top Users Chart -->
+        <div class="col-lg-6 mb-4">
+            <div class="card chart-card">
                 <h4 class="mb-3">Top Active Users (Last 7 Days)</h4>
-                <div class="table-responsive">
-                    <table class="table table-borderless text-white align-middle">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Avatar</th>
-                                <th>Username</th>
-                                <th>Quizzes Attempted</th>
-                                <th>Badges</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($leaderboard as $index => $user): 
-                                $highlight = ($user['username'] == $currentUser['username']) ? "highlight" : "";
-                                $badges = [];
-                                if($user['quizzes'] >= 3) $badges[] = "⭐ Rising Star";
-                                if($user['quizzes'] >= 5) $badges[] = "🏆 Quiz Master";
-                                if($user['quizzes'] >= 10) $badges[] = "🔥 Champion";
-                            ?>
-                                <tr class="<?php echo $highlight; ?>">
-                                    <td><?php echo $index + 1; ?></td>
-                                    <td><img src="uploads/<?php echo htmlspecialchars($user['profile_pic']); ?>" class="avatar"></td>
-                                    <td><?php echo htmlspecialchars($user['username']); ?></td>
-                                    <td><?php echo $user['quizzes']; ?></td>
-                                    <td>
-                                        <?php foreach($badges as $b): ?>
-                                            <span class="badge bg-warning text-dark me-1 mb-1"><?php echo $b; ?></span>
-                                        <?php endforeach; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
+                <canvas id="topUsersChart"></canvas>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-// Engagement Chart
-new Chart(document.getElementById('engagementChart'), {
-    type: 'line',
-    data: {
-        labels: <?php echo json_encode($days); ?>,
-        datasets: [
-            {
-                label: 'Quizzes Attempted',
-                data: <?php echo json_encode($quizzesPerDay); ?>,
-                borderColor: '#4caf50',
-                backgroundColor: '#4caf50a0',
-                yAxisID: 'y'
-            },
-            {
-                label: 'Accuracy (%)',
-                data: <?php echo json_encode($accuracyPerDay); ?>,
-                borderColor: '#ff9800',
-                backgroundColor: '#ff9800a0',
-                yAxisID: 'y1'
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        interaction: { mode: 'index', intersect: false },
-        stacked: false,
-        scales: {
-            y: { type: 'linear', position: 'left', title: { display: true, text: 'Quizzes Attempted', color: '#fff' }, ticks: { color: '#fff', stepSize: 1 }, beginAtZero:true },
-            y1: { type: 'linear', position: 'right', title: { display: true, text: 'Accuracy %', color: '#fff' }, ticks: { color: '#fff', stepSize: 10 }, beginAtZero:true },
-            x: { ticks: { color: '#fff' } }
-        },
-        plugins: { legend: { labels: { color: '#fff' } } }
-    }
-});
+let engagementChart, subjectChart, topUsersChart;
 
-// Subject-wise Chart
-new Chart(document.getElementById('subjectChart'), {
-    type: 'bar',
-    data: {
-        labels: <?php echo json_encode($subjects); ?>,
-        datasets: [
-            {
-                label: 'Attempts',
-                data: <?php echo json_encode($subjectAttempts); ?>,
-                backgroundColor: '#2196f3'
-            },
-            {
-                label: 'Accuracy %',
-                data: <?php echo json_encode($subjectAccuracy); ?>,
-                backgroundColor: '#ffeb3b'
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        interaction: { mode: 'index', intersect: false },
-        plugins: { legend: { labels: { color: '#fff' } } },
-        scales: { y: { ticks: { color: '#fff' } }, x: { ticks: { color: '#fff' } } }
-    }
-});
+function fetchAnalyticsData(){
+    fetch('analytics_data.php')
+    .then(res => res.json())
+    .then(data => {
+        if(!data.days) return;
+
+        // Engagement Line Chart
+        const ctx1 = document.getElementById('engagementChart').getContext('2d');
+        if(!engagementChart){
+            engagementChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: data.days,
+                    datasets: [
+                        { label: 'Quizzes Attempted', data: data.quizzesPerDay, borderColor: '#4e73df', backgroundColor: '#4e73dfa0', yAxisID: 'y' },
+                        { label: 'Accuracy (%)', data: data.accuracyPerDay, borderColor: '#1cc88a', backgroundColor: '#1cc88aa0', yAxisID: 'y1' }
+                    ]
+                },
+                options: {
+                    responsive:true,
+                    interaction:{mode:'index',intersect:false},
+                    stacked:false,
+                    scales:{
+                        y:{ type:'linear', position:'left', title:{display:true,text:'Quizzes'}, beginAtZero:true },
+                        y1:{ type:'linear', position:'right', title:{display:true,text:'Accuracy %'}, beginAtZero:true },
+                        x:{}
+                    },
+                    plugins:{ legend:{ position:'top' } }
+                }
+            });
+        } else {
+            engagementChart.data.labels = data.days;
+            engagementChart.data.datasets[0].data = data.quizzesPerDay;
+            engagementChart.data.datasets[1].data = data.accuracyPerDay;
+            engagementChart.update();
+        }
+
+        // Subject Doughnut Chart
+        const ctx2 = document.getElementById('subjectChart').getContext('2d');
+        if(!subjectChart){
+            subjectChart = new Chart(ctx2, {
+                type: 'doughnut',
+                data: {
+                    labels: data.subjects,
+                    datasets: [{
+                        data: data.subjectAttempts,
+                        backgroundColor: ['#FF6384','#36A2EB','#FFCE56','#4BC0C0','#9966FF','#FF9F40']
+                    }]
+                },
+                options:{
+                    responsive:true,
+                    maintainAspectRatio: false,
+                    plugins:{ legend:{ position:'bottom', labels:{ padding:20, boxWidth:15 } } }
+                }
+            });
+        } else {
+            subjectChart.data.labels = data.subjects;
+            subjectChart.data.datasets[0].data = data.subjectAttempts;
+            subjectChart.update();
+        }
+
+        // Top Users Bar Chart
+        const ctx3 = document.getElementById('topUsersChart').getContext('2d');
+        if(!topUsersChart){
+            topUsersChart = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: data.topUsers.map(u => u.username),
+                    datasets: [{
+                        label: 'Quizzes Attempted',
+                        data: data.topUsers.map(u => u.quizzes),
+                        backgroundColor: '#4e73df'
+                    }]
+                },
+                options:{
+                    responsive:true,
+                    maintainAspectRatio: false,
+                    plugins:{ legend:{ display:false } },
+                    scales:{ y:{ beginAtZero:true, title:{ display:true, text:'Quizzes' } } }
+                }
+            });
+        } else {
+            topUsersChart.data.labels = data.topUsers.map(u => u.username);
+            topUsersChart.data.datasets[0].data = data.topUsers.map(u => u.quizzes);
+            topUsersChart.update();
+        }
+
+    })
+    .catch(err => console.error(err));
+}
+
+// Fetch data initially and every 10 seconds
+fetchAnalyticsData();
+setInterval(fetchAnalyticsData, 10000);
 </script>
+
 </body>
 </html>

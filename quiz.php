@@ -1,65 +1,64 @@
 <?php
 session_start();
 include 'api/db.php';
+include 'sidebar.php';
 
+// Ensure user is logged in
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
     exit;
 }
 
-// Handle first-time selection
-if(isset($_POST['start_quiz'])){
+// Handle POST from subject selection page
+if(isset($_POST['subject']) && isset($_POST['difficulty'])){
     $_SESSION['quiz_subject'] = $_POST['subject'];
-    $_SESSION['quiz_difficulty'] = (int)$_POST['difficulty']; // cast to int
-    $_SESSION['quiz'] = null; // reset quiz
+    $_SESSION['quiz_difficulty'] = (int)$_POST['difficulty'];
+    $_SESSION['quiz'] = null; // reset previous quiz
 }
 
-// Get subject and difficulty from session
 $subject = $_SESSION['quiz_subject'] ?? null;
 $difficulty = $_SESSION['quiz_difficulty'] ?? null;
 
-// Fetch questions if selection exists and quiz not initialized
-if($subject && $difficulty && (!isset($_SESSION['quiz']) || empty($_SESSION['quiz']['questions']))){
-    $stmt = $conn->prepare("
-        SELECT id, subject, question_text, option1, option2, option3, option4, correct_option, difficulty
-        FROM questions
-        WHERE subject=? AND difficulty=?
-    ");
-    $stmt->bind_param("si", $subject, $difficulty);
-    $stmt->execute();
-    $result = $stmt->get_result();
+// Redirect if no subject selected
+if(!$subject || !$difficulty){
+    header("Location: select_subject.php");
+    exit;
+}
 
+// Initialize quiz if not already set
+if(!isset($_SESSION['quiz']) || empty($_SESSION['quiz']['questions'])){
     $questions = [];
-    while($row = $result->fetch_assoc()){
-        $questions[] = $row;
+    if($conn){
+        $stmt = $conn->prepare("SELECT id, subject, question_text, option1, option2, option3, option4, correct_option, difficulty 
+                                FROM questions WHERE subject=? AND difficulty=? ORDER BY RAND() LIMIT 10");
+        $stmt->bind_param("si", $subject, $difficulty);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $questions[] = $row;
+        }
+        $stmt->close();
     }
-    $stmt->close();
 
-    if(count($questions) < 1){
-        die("No questions available for $subject at selected difficulty.");
+    if(empty($questions)){
+        die("No questions available for this subject.");
     }
-
-    shuffle($questions); // shuffle in PHP
-    $questions = array_slice($questions, 0, 10); // pick exactly 10
 
     $_SESSION['quiz'] = [
-        'questions' => $questions,
-        'current' => 0,
-        'xp' => 0,
-        'lives' => 3,
-        'streak' => 0,
-        'correct_count' => 0,
-        'wrong_count' => 0
+        'questions'=>$questions,
+        'current'=>0,
+        'xp'=>0,
+        'streak'=>0,
+        'lives'=>3,
+        'correct_count'=>0,
+        'wrong_count'=>0
     ];
 }
 
-// Current question info
-$currentIndex = $_SESSION['quiz']['current'] ?? 0;
-$totalQuestions = count($_SESSION['quiz']['questions'] ?? []);
-$currentQuestion = $_SESSION['quiz']['questions'][$currentIndex] ?? null;
-
-// Next level XP
-$level = floor(($_SESSION['quiz']['xp'] ?? 0) / 100) + 1;
+$currentIndex = $_SESSION['quiz']['current'];
+$totalQuestions = count($_SESSION['quiz']['questions']);
+$currentQuestion = $_SESSION['quiz']['questions'][$currentIndex];
+$level = floor($_SESSION['quiz']['xp'] / 100) + 1;
 $nextLevelXP = $level * 100;
 ?>
 
@@ -69,70 +68,55 @@ $nextLevelXP = $level * 100;
 <meta charset="UTF-8">
 <title>Gamified Quiz</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <style>
-body { background: #f4f6f8; }
-.card { border-radius: 15px; transition: transform 0.3s; }
+body { background:#f4f6f8; font-family:sans-serif; }
+.card { border-radius:15px; transition: transform 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
 .card:hover { transform: scale(1.02); }
-.progress-bar { transition: width 0.5s; font-weight: bold; }
-.timer { font-weight: bold; font-size: 1.1em; margin-bottom:10px; }
-.option { cursor: pointer; transition: all 0.2s; padding:10px; border-radius:8px; margin:5px 0; background:#eee; }
+.option { cursor:pointer; transition: all 0.2s; padding:12px; border-radius:8px; margin:5px 0; background:#eee; font-weight:bold;}
 .option.correct { background:#a6e6a6 !important; }
 .option.wrong { background:#f8a6a6 !important; }
 .option:hover { background:#ddd; }
 #nextBtn { display:none; margin-top:15px; }
+.progress-bar { transition: width 0.5s; font-weight:bold; text-align:center; }
+.timer { font-weight:bold; font-size:1.1em; margin-bottom:10px; }
+.stats span { margin-right:15px; }
+#streak-badges span { margin-right:5px; margin-bottom:5px; }
+.quiz-info { font-weight:bold; font-size:1.1em; }
+.xp-level-bar { margin-bottom:15px; height:25px; border-radius:12px; overflow:hidden; background:#ddd; }
+.xp-level-bar .bar { height:100%; text-align:center; font-weight:bold; line-height:25px; color:#fff; transition: width 0.5s; }
+.bar-success { background:#28a745; }
 </style>
 </head>
 <body>
+
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg p-4">
 
-                <?php if(!$subject || !$difficulty): ?>
-                <!-- Subject/Difficulty Selection -->
-                <h4>Select Subject & Difficulty</h4>
-                <form method="post">
-                    <div class="mb-3">
-                        <label>Subject</label>
-                        <select name="subject" class="form-control" required>
-                            <option value="Coding">Coding</option>
-                            <option value="Math">Math</option>
-                            <option value="Science">Science</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label>Difficulty</label>
-                        <select name="difficulty" class="form-control" required>
-                            <option value="1">Low</option>
-                            <option value="2">Medium</option>
-                            <option value="3">High</option>
-                        </select>
-                    </div>
-                    <button type="submit" name="start_quiz" class="btn btn-primary">Start Quiz</button>
-                </form>
-
-                <?php else: ?>
-                <!-- Locked Display -->
-                <div class="mb-3">
-                    <strong>Subject:</strong> <?php echo $subject; ?> |
-                    <strong>Difficulty:</strong> <?php echo ($difficulty==1?'Low':($difficulty==2?'Medium':'High')); ?>
+                <!-- Quiz Info -->
+                <div class="d-flex justify-content-between mb-3 quiz-info">
+                    <div>Subject: <span id="quiz-subject"><?php echo htmlspecialchars(ucfirst($subject)); ?></span></div>
+                    <div>Level: <span id="quiz-level"><?php echo $level; ?></span></div>
                 </div>
 
-                <!-- User Stats -->
-                <div class="d-flex justify-content-between mb-3">
+                <!-- Stats -->
+                <div class="d-flex justify-content-between mb-3 stats">
                     <div>Lives: <span id="lives"><?php echo str_repeat('❤', $_SESSION['quiz']['lives']); ?></span></div>
                     <div>Streak: <span id="streak"><?php echo $_SESSION['quiz']['streak']; ?></span></div>
                     <div>XP: <span id="xp"><?php echo $_SESSION['quiz']['xp']; ?></span></div>
                 </div>
 
-                <!-- XP Bar -->
-                <div class="progress mb-3" style="height: 25px;">
-                    <div id="xp-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
-                         role="progressbar" style="width:0%">0 / <?php echo $nextLevelXP; ?> XP</div>
+                <!-- XP Level Bar -->
+                <div class="xp-level-bar">
+                    <div id="xp-bar" class="bar bar-success" style="width:<?php echo ($_SESSION['quiz']['xp']%100); ?>%">
+                        <?php echo $_SESSION['quiz']['xp']; ?> / <?php echo $nextLevelXP; ?> XP
+                    </div>
                 </div>
 
                 <!-- Badges -->
-                <div id="streak-badges" class="d-flex flex-wrap mb-4"></div>
+                <div id="streak-badges" class="d-flex flex-wrap mb-3"></div>
 
                 <!-- Timer -->
                 <div class="timer" id="timer">Time left: 30s</div>
@@ -147,20 +131,9 @@ body { background: #f4f6f8; }
                     <?php endfor; ?>
                 </div>
 
-                <button class="btn btn-primary" id="nextBtn">Next</button>
-                <?php endif; ?>
-
+                <!-- Next Button -->
+                <button class="btn btn-primary mt-3" id="nextBtn">Next</button>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Toast -->
-<div class="position-fixed top-0 end-0 p-3" style="z-index: 1055">
-    <div id="quiz-toast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="toast-body"></div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
         </div>
     </div>
 </div>
@@ -169,9 +142,7 @@ body { background: #f4f6f8; }
 <audio id="correct-sound" src="sounds/correct.mp3"></audio>
 <audio id="wrong-sound" src="sounds/wrong.mp3"></audio>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-<?php if($subject && $difficulty): ?>
 let quizData = <?php echo json_encode($_SESSION['quiz']); ?>;
 let currentIndex = <?php echo $currentIndex; ?>;
 let totalQuestions = <?php echo $totalQuestions; ?>;
@@ -184,34 +155,37 @@ let timer;
 
 const correctSound = document.getElementById('correct-sound');
 const wrongSound = document.getElementById('wrong-sound');
-const toastEl = document.getElementById('quiz-toast');
-const toastBody = document.getElementById('toast-body');
-const toast = new bootstrap.Toast(toastEl);
 
-function showBootstrapToast(msg,type='info'){
-    toastBody.innerText = msg;
-    toastEl.className = 'toast align-items-center text-white border-0';
-    toastEl.classList.add(`bg-${type}`);
-    toast.show();
-}
+const levelEl = document.getElementById('quiz-level');
+const xpBar = document.getElementById('xp-bar');
 
-function loadQuestion(){
-    if(currentIndex>=totalQuestions || lives<=0){
-        showBootstrapToast("Quiz Over! Redirecting...", "info");
-        setTimeout(()=>window.location.href='quiz_result.php',1500);
+function loadQuestion() {
+    if(currentIndex >= totalQuestions || lives <= 0){
+        fetch('update_quiz_stats.php', {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({
+                xp: xp, streak: streak, lives: lives,
+                correct_count: quizData.correct_count,
+                wrong_count: quizData.wrong_count
+            })
+        }).finally(()=>{
+            window.location.href='quiz_result.php';
+        });
         return;
     }
+
     const q = quizData.questions[currentIndex];
     document.getElementById('question-text').innerText = (currentIndex+1)+'. '+q.question_text;
-    const optionsContainer = document.getElementById('options-container');
-    optionsContainer.innerHTML='';
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
     for(let i=1;i<=4;i++){
-        const optDiv = document.createElement('div');
-        optDiv.className='option';
-        optDiv.dataset.value=i;
-        optDiv.innerText=q['option'+i];
-        optionsContainer.appendChild(optDiv);
-        optDiv.addEventListener('click',()=>handleOptionClick(optDiv,q));
+        const div = document.createElement('div');
+        div.className='option';
+        div.dataset.value=i;
+        div.innerText = q['option'+i];
+        div.addEventListener('click', ()=> handleClick(div,q));
+        container.appendChild(div);
     }
     document.getElementById('nextBtn').style.display='none';
     startTimer();
@@ -226,104 +200,85 @@ function startTimer(){
         timerEl.textContent = `Time left: ${timeLeft}s`;
         if(timeLeft<=0){
             clearInterval(timer);
-            showBootstrapToast("Time's up!", "warning");
             nextQuestion();
         }
     },1000);
 }
 
-function updateStats(){
-    document.getElementById('lives').innerText='❤'.repeat(lives);
-    document.getElementById('streak').innerText=streak;
-    document.getElementById('xp').innerText=xp;
-}
-
-function addXPAnimation(){
-    const bar = document.getElementById('xp-bar');
-    let width = parseInt(bar.style.width)||0;
-    let target = Math.min(100,(xp/nextLevelXP)*100);
-    const anim = setInterval(()=>{
-        if(width>=target) clearInterval(anim);
-        else{
-            width++;
-            bar.style.width=width+'%';
-            bar.innerText=Math.round((width/100)*nextLevelXP)+' / '+nextLevelXP+' XP';
-        }
-    },20);
-}
-
-function updateBadges(){
-    const container=document.getElementById('streak-badges');
-    container.innerHTML='';
-    if(streak>=5){ const s=document.createElement('span'); s.className='badge bg-warning text-dark me-2 mb-2'; s.innerText='⭐ Rising Star'; container.appendChild(s);}
-    if(streak>=10){ const s=document.createElement('span'); s.className='badge bg-primary me-2 mb-2'; s.innerText='🏆 Quiz Master'; container.appendChild(s);}
-    if(streak>=20){ const s=document.createElement('span'); s.className='badge bg-danger me-2 mb-2'; s.innerText='🔥 Champion'; container.appendChild(s);}
-}
-
-function handleOptionClick(optDiv,q){
+function handleClick(opt,q){
     clearInterval(timer);
-    const value=optDiv.dataset.value;
-    const correct=q.correct_option;
+    const correct = q.correct_option;
     document.querySelectorAll('.option').forEach(o=>o.style.pointerEvents='none');
-    if(value==correct){
-        optDiv.classList.add('correct');
+
+    if(opt.dataset.value==correct){
+        opt.classList.add('correct');
         correctSound.play();
-        xp+=10;
         streak++;
+        xp += 10;
         quizData.correct_count = (quizData.correct_count||0)+1;
-        showBootstrapToast("Correct!","success");
-    }else{
-        optDiv.classList.add('wrong');
+    } else {
+        opt.classList.add('wrong');
         wrongSound.play();
-        streak=0;
-        lives=lives>0?lives-1:0;
+        streak = 0;
+        lives--;
         quizData.wrong_count = (quizData.wrong_count||0)+1;
-        document.querySelectorAll('.option').forEach(o=>{if(o.dataset.value==correct) o.classList.add('correct');});
-        showBootstrapToast("Wrong!","danger");
+        document.querySelectorAll('.option').forEach(o=>{ if(o.dataset.value==correct) o.classList.add('correct'); });
     }
+
     updateStats();
-    addXPAnimation();
     updateBadges();
-
-    fetch('update_quiz_stats.php',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({xp, streak, lives, correct_count:quizData.correct_count, wrong_count:quizData.wrong_count})
-    });
-
     document.getElementById('nextBtn').style.display='inline-block';
 }
 
-function nextQuestion(){currentIndex++; loadQuestion();}
-document.getElementById('nextBtn').addEventListener('click',nextQuestion);
+function updateStats(){
+    document.getElementById('lives').innerText = '❤'.repeat(lives);
+    document.getElementById('streak').innerText = streak;
+    document.getElementById('xp').innerText = xp;
 
-window.addEventListener('load',()=>{
+    // Update level and XP bar
+    let level = Math.floor(xp / 100) + 1;
+    levelEl.innerText = level;
+    let percent = Math.min(100, (xp%100));
+    xpBar.style.width = percent+'%';
+    xpBar.innerText = xp+' / '+(level*100)+' XP';
+}
+
+function updateBadges(){
+    const container = document.getElementById('streak-badges');
+    container.innerHTML = '';
+    if(streak>=5){
+        const span = document.createElement('span');
+        span.className="badge bg-warning text-dark";
+        span.innerText="⭐ Rising Star";
+        container.appendChild(span);
+    }
+    if(streak>=10){
+        const span = document.createElement('span');
+        span.className="badge bg-primary";
+        span.innerText="🏆 Quiz Master";
+        container.appendChild(span);
+    }
+    if(streak>=20){
+        const span = document.createElement('span');
+        span.className="badge bg-danger";
+        span.innerText="🔥 Champion";
+        container.appendChild(span);
+    }
+}
+
+document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+
+function nextQuestion(){
+    currentIndex++;
+    quizData.current = currentIndex;
+    loadQuestion();
+}
+
+window.addEventListener('load', ()=>{
     updateStats();
-    addXPAnimation();
     updateBadges();
     loadQuestion();
 });
-
-// Anti-cheat
-let tabSwitchCount=0;
-window.addEventListener('blur',()=>{
-    tabSwitchCount++;
-    if(tabSwitchCount===1) showBootstrapToast("Do not switch tabs","warning");
-    else {
-        streak=0;
-        lives=lives>0?lives-1:0;
-        updateStats();
-        fetch('update_quiz_stats.php',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({xp, streak, lives, correct_count:quizData.correct_count, wrong_count:quizData.wrong_count})
-        });
-        showBootstrapToast("Cheating detected!","danger");
-    }
-});
-
-['contextmenu','copy','cut','paste'].forEach(e=>document.addEventListener(e,ev=>ev.preventDefault()));
-<?php endif; ?>
 </script>
 </body>
 </html>

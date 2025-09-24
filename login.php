@@ -1,22 +1,30 @@
 <?php
 session_start();
 include 'api/db.php';
+
 $message = "";
 
 if(isset($_POST['login'])){
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, username, password FROM users WHERE email=?");
+    // Fetch user details from database
+    $stmt = $conn->prepare("SELECT id, username, password, xp, level, profile_pic FROM users WHERE email=?");
     if(!$stmt) die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
 
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $stmt->bind_result($id, $username, $hashed_password);
+    $stmt->bind_result($id, $username, $hashed_password, $xp, $level, $profile_pic);
+
     if($stmt->fetch()){
         if(password_verify($password, $hashed_password)){
+            // Store all important info in session
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;
+            $_SESSION['xp'] = $xp;
+            $_SESSION['level'] = $level;
+            $_SESSION['profile_pic'] = $profile_pic;
+
             header("Location: index.php");
             exit;
         } else {
@@ -25,6 +33,7 @@ if(isset($_POST['login'])){
     } else {
         $message = "Email not registered!";
     }
+
     $stmt->close();
 }
 ?>
