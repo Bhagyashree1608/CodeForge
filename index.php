@@ -92,6 +92,8 @@ body {
     color: #fff;
     font-family: 'Arial', sans-serif;
 }
+
+/* Sidebar */
 .sidebar {
     height: 100vh;
     background: rgba(30,30,47,0.95);
@@ -109,47 +111,68 @@ body {
 .sidebar a:hover {
     background: #5a4b4b;
 }
+
+/* Profile Picture */
 .profile-pic {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
+
+/* Cards */
 .card {
     border-radius: 15px;
     background: rgba(0,0,0,0.5);
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    color: #fff; /* Ensure card text is white */
 }
+
+/* Progress Bars */
 .progress-bar {
     transition: width 0.5s;
     font-weight: bold;
+    color: #fff !important; /* Force text color white */
 }
+
+/* Badges */
 .badge {
     font-size: 0.75rem;
+    color: #000 !important; /* Badge text black for contrast on yellow badges */
 }
+
+/* Table */
 .table thead {
     background: rgba(0,0,0,0.6);
+    color: #fff; /* Table header text white */
 }
 .table tbody tr:nth-child(odd) {
     background: rgba(0,0,0,0.3);
+    color: #fff; /* Odd rows text white */
 }
 .table tbody tr:nth-child(even) {
     background: rgba(0,0,0,0.4);
+    color: #fff; /* Even rows text white */
 }
 .table tbody tr.highlight {
     background: #ff6f61 !important;
-    color: #fff;
-    font-weight: bold;
+    color: #fff !important; /* Highlighted row text white */
 }
+
+/* Search Box */
 #leaderboardSearch {
     max-width: 300px;
     margin-bottom: 15px;
+    color: #000; /* Text in input field */
 }
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar { height: auto; }
     .profile-pic { width: 35px; height: 35px; }
-    .table td, .table th { font-size: 0.85rem; }
+    .table td, .table th { font-size: 0.85rem; color: #fff; }
 }
+
 </style>
 </head>
 <body>

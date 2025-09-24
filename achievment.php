@@ -1,21 +1,7 @@
 <?php
 session_start();
 include 'api/db.php';
-// Fetch user badges from database
-$user_badges = [];
-$stmt = $conn->prepare("SELECT badge_name FROM badges WHERE user_id=?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()){
-    $user_badges[] = $row['badge_name'];
-}
-$stmt->close();
-
-// Include badges earned in current session
-if(isset($_SESSION['quiz_badges'])){
-    $user_badges = array_unique(array_merge($user_badges, $_SESSION['quiz_badges']));
-}
+include 'sidebar.php';
 
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
@@ -24,7 +10,7 @@ if(!isset($_SESSION['user_id'])){
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user stats
+// Fetch user XP
 $stmt = $conn->prepare("SELECT xp FROM users WHERE id=?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -37,43 +23,15 @@ $level = floor($xp / 100) + 1;
 $nextLevelXP = $level * 100;
 $currentProgress = $xp % 100;
 
-// --- Fetch all badges from leaderboard ---
-$all_badges = [];
-$stmt = $conn->prepare("SELECT badge_name, badge_icon FROM leaderboard_badges ORDER BY id ASC");
-if($stmt){
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while($row = $result->fetch_assoc()){
-        $all_badges[$row['badge_name']] = $row['badge_icon'];
-    }
-    $stmt->close();
-}
+// --- Badges from session (quiz module) ---
+$quiz_badges = $_SESSION['quiz_badges'] ?? [];
 
-// --- Fetch badges earned by user from quiz ---
-$user_badges = [];
-$stmt = $conn->prepare("SELECT badge_name FROM badges WHERE user_id=?");
-if($stmt){
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while($row = $result->fetch_assoc()){
-        $user_badges[] = $row['badge_name'];
-    }
-    $stmt->close();
-}
-
-// --- Merge quiz module badges into leaderboard badges if missing ---
-$quiz_module_badges = [
+// Define all possible quiz badges and icons
+$all_badges = [
     'Rising Star' => 'bi bi-star',
     'Quiz Master' => 'bi bi-trophy',
     'Champion' => 'bi bi-fire'
 ];
-
-foreach($quiz_module_badges as $name => $icon){
-    if(!isset($all_badges[$name])){
-        $all_badges[$name] = $icon;
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,8 +59,6 @@ h3 { text-align: center; margin-bottom: 25px; }
 </style>
 </head>
 <body>
-
-<?php include 'sidebar.php'; ?>
 
 <div class="main-content">
     <h3>🏆 Your Achievements</h3>
@@ -134,24 +90,17 @@ h3 { text-align: center; margin-bottom: 25px; }
     <div class="card">
         <h5>Badges</h5>
         <div class="badge-container">
-            <?php if(!empty($all_badges)): ?>
-                <?php foreach($all_badges as $name => $icon): ?>
-                    <?php $earned = in_array($name, $user_badges); ?>
-                    <div class="badge-card <?php echo $earned ? 'earned' : ''; ?>">
-                        <i class="<?php echo $icon; ?>"></i>
-                        <div>
-                            <strong><?php echo $name; ?></strong>
-                            <?php if($earned): ?>
-                                <br><small>Earned ✅</small>
-                            <?php else: ?>
-                                <br><small>Locked 🔒</small>
-                            <?php endif; ?>
-                        </div>
+            <?php foreach($all_badges as $name => $icon): ?>
+                <?php $earned = in_array($name, $quiz_badges); ?>
+                <div class="badge-card <?php echo $earned ? 'earned' : ''; ?>">
+                    <i class="<?php echo $icon; ?>"></i>
+                    <div>
+                        <strong><?php echo $name; ?></strong>
+                        <br>
+                        <small><?php echo $earned ? 'Earned ✅' : 'Locked 🔒'; ?></small>
                     </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No badges defined yet.</p>
-            <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
