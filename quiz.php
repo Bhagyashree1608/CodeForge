@@ -16,6 +16,7 @@ if(isset($_POST['subject']) && isset($_POST['difficulty'])){
     $_SESSION['quiz'] = null; // reset previous quiz
 }
 
+// Get subject & difficulty
 $subject = $_SESSION['quiz_subject'] ?? null;
 $difficulty = $_SESSION['quiz_difficulty'] ?? null;
 
@@ -53,6 +54,7 @@ if(!isset($_SESSION['quiz']) || empty($_SESSION['quiz']['questions'])){
         'correct_count'=>0,
         'wrong_count'=>0
     ];
+    $_SESSION['quiz_badges'] = []; // store quiz badges
 }
 
 $currentIndex = $_SESSION['quiz']['current'];
@@ -155,19 +157,22 @@ let timer;
 
 const correctSound = document.getElementById('correct-sound');
 const wrongSound = document.getElementById('wrong-sound');
-
 const levelEl = document.getElementById('quiz-level');
 const xpBar = document.getElementById('xp-bar');
 
 function loadQuestion() {
     if(currentIndex >= totalQuestions || lives <= 0){
+        // Send XP, streak, lives, badges to server to store session
         fetch('update_quiz_stats.php', {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({
-                xp: xp, streak: streak, lives: lives,
+                xp: xp,
+                streak: streak,
+                lives: lives,
                 correct_count: quizData.correct_count,
-                wrong_count: quizData.wrong_count
+                wrong_count: quizData.wrong_count,
+                badges: Array.from(document.querySelectorAll('#streak-badges span')).map(s=>s.innerText)
             })
         }).finally(()=>{
             window.location.href='quiz_result.php';

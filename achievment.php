@@ -1,6 +1,21 @@
 <?php
 session_start();
 include 'api/db.php';
+// Fetch user badges from database
+$user_badges = [];
+$stmt = $conn->prepare("SELECT badge_name FROM badges WHERE user_id=?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+while($row = $result->fetch_assoc()){
+    $user_badges[] = $row['badge_name'];
+}
+$stmt->close();
+
+// Include badges earned in current session
+if(isset($_SESSION['quiz_badges'])){
+    $user_badges = array_unique(array_merge($user_badges, $_SESSION['quiz_badges']));
+}
 
 if(!isset($_SESSION['user_id'])){
     header("Location: login.php");
@@ -22,26 +37,43 @@ $level = floor($xp / 100) + 1;
 $nextLevelXP = $level * 100;
 $currentProgress = $xp % 100;
 
-// Fetch all badges from leaderboard
+// --- Fetch all badges from leaderboard ---
 $all_badges = [];
 $stmt = $conn->prepare("SELECT badge_name, badge_icon FROM leaderboard_badges ORDER BY id ASC");
-$stmt->execute();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()){
-    $all_badges[] = $row;
+if($stmt){
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+        $all_badges[$row['badge_name']] = $row['badge_icon'];
+    }
+    $stmt->close();
 }
-$stmt->close();
 
-// Fetch badges earned by user
+// --- Fetch badges earned by user from quiz ---
 $user_badges = [];
 $stmt = $conn->prepare("SELECT badge_name FROM badges WHERE user_id=?");
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-while($row = $result->fetch_assoc()){
-    $user_badges[] = $row['badge_name'];
+if($stmt){
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while($row = $result->fetch_assoc()){
+        $user_badges[] = $row['badge_name'];
+    }
+    $stmt->close();
 }
-$stmt->close();
+
+// --- Merge quiz module badges into leaderboard badges if missing ---
+$quiz_module_badges = [
+    'Rising Star' => 'bi bi-star',
+    'Quiz Master' => 'bi bi-trophy',
+    'Champion' => 'bi bi-fire'
+];
+
+foreach($quiz_module_badges as $name => $icon){
+    if(!isset($all_badges[$name])){
+        $all_badges[$name] = $icon;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,12 +135,12 @@ h3 { text-align: center; margin-bottom: 25px; }
         <h5>Badges</h5>
         <div class="badge-container">
             <?php if(!empty($all_badges)): ?>
-                <?php foreach($all_badges as $b): ?>
-                    <?php $earned = in_array($b['badge_name'], $user_badges); ?>
+                <?php foreach($all_badges as $name => $icon): ?>
+                    <?php $earned = in_array($name, $user_badges); ?>
                     <div class="badge-card <?php echo $earned ? 'earned' : ''; ?>">
-                        <i class="<?php echo $b['badge_icon']; ?>"></i>
+                        <i class="<?php echo $icon; ?>"></i>
                         <div>
-                            <strong><?php echo $b['badge_name']; ?></strong>
+                            <strong><?php echo $name; ?></strong>
                             <?php if($earned): ?>
                                 <br><small>Earned ✅</small>
                             <?php else: ?>
@@ -118,7 +150,7 @@ h3 { text-align: center; margin-bottom: 25px; }
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <p>No badges defined in leaderboard yet.</p>
+                <p>No badges defined yet.</p>
             <?php endif; ?>
         </div>
     </div>
