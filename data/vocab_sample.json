@@ -1,0 +1,369 @@
+[
+ 
+  {
+    "question": "What does 'ephemeral' mean?",
+    "options": ["Lasting for a long time", "Short-lived", "Impossible", "Mysterious"],
+    "answer": "Short-lived",
+    "difficulty": 1
+  },
+  {
+    "question": "What is the meaning of 'benevolent'?",
+    "options": ["Kind and generous", "Evil", "Lazy", "Talkative"],
+    "answer": "Kind and generous",
+    "difficulty": 1
+  },
+  {
+    "question": "Which word means 'fear of heights'?",
+    "options": ["Acrophobia", "Claustrophobia", "Agoraphobia", "Xenophobia"],
+    "answer": "Acrophobia",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a synonym of 'quick'?",
+    "options": ["Slow", "Rapid", "Lazy", "Dull"],
+    "answer": "Rapid",
+    "difficulty": 1
+  },
+  {
+    "question": "Choose the antonym of 'optimistic'.",
+    "options": ["Hopeful", "Pessimistic", "Joyful", "Cheerful"],
+    "answer": "Pessimistic",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'amiable'?",
+    "options": ["Friendly", "Hostile", "Sad", "Angry"],
+    "answer": "Friendly",
+    "difficulty": 1
+  },
+  {
+    "question": "Synonym of 'happy'?",
+    "options": ["Joyful", "Sad", "Angry", "Lazy"],
+    "answer": "Joyful",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'tiny'?",
+    "options": ["Small", "Huge", "Fast", "Slow"],
+    "answer": "Small",
+    "difficulty": 1
+  },
+  {
+    "question": "Antonym of 'hot'?",
+    "options": ["Warm", "Cold", "Mild", "Boiling"],
+    "answer": "Cold",
+    "difficulty": 1
+  },
+  {
+    "question": "What does 'brief' mean?",
+    "options": ["Short", "Long", "Wide", "Deep"],
+    "answer": "Short",
+    "difficulty": 1
+  },
+  {
+    "question": "Synonym of 'smart'?",
+    "options": ["Intelligent", "Dull", "Lazy", "Slow"],
+    "answer": "Intelligent",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'lively'?",
+    "options": ["Energetic", "Lazy", "Sad", "Angry"],
+    "answer": "Energetic",
+    "difficulty": 1
+  },
+  {
+    "question": "Choose the synonym of 'calm'.",
+    "options": ["Peaceful", "Angry", "Rude", "Noisy"],
+    "answer": "Peaceful",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'easy'?",
+    "options": ["Simple", "Difficult", "Complex", "Tough"],
+    "answer": "Simple",
+    "difficulty": 1
+  },
+  {
+    "question": "Synonym of 'angry'?",
+    "options": ["Furious", "Happy", "Calm", "Relaxed"],
+    "answer": "Furious",
+    "difficulty": 1
+  },
+  {
+    "question": "Antonym of 'dark'?",
+    "options": ["Light", "Shadow", "Black", "Night"],
+    "answer": "Light",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'cold'?",
+    "options": ["Freezing", "Hot", "Warm", "Boiling"],
+    "answer": "Freezing",
+    "difficulty": 1
+  },
+  {
+    "question": "Synonym of 'funny'?",
+    "options": ["Humorous", "Sad", "Angry", "Serious"],
+    "answer": "Humorous",
+    "difficulty": 1
+  },
+  {
+    "question": "Antonym of 'easy'?",
+    "options": ["Difficult", "Simple", "Light", "Quick"],
+    "answer": "Difficult",
+    "difficulty": 1
+  },
+  {
+    "question": "Meaning of 'fast'?",
+    "options": ["Quick", "Slow", "Late", "Lazy"],
+    "answer": "Quick",
+    "difficulty": 1
+  },
+
+  {
+    "question": "What does 'lucid' mean?",
+    "options": ["Confusing", "Clear and easy to understand", "Sleepy", "Sad"],
+    "answer": "Clear and easy to understand",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'obfuscate'?",
+    "options": ["Clarify", "Confuse", "Explain", "Celebrate"],
+    "answer": "Confuse",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'alacrity'?",
+    "options": ["Laziness", "Eagerness", "Anger", "Fear"],
+    "answer": "Eagerness",
+    "difficulty": 2
+  },
+  {
+    "question": "Choose the word which means 'to praise highly'.",
+    "options": ["Extol", "Condemn", "Ignore", "Blame"],
+    "answer": "Extol",
+    "difficulty": 2
+  },
+  {
+    "question": "Antonym of 'candid'?",
+    "options": ["Frank", "Dishonest", "Open", "Honest"],
+    "answer": "Dishonest",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'gregarious'?",
+    "options": ["Sociable", "Shy", "Lazy", "Angry"],
+    "answer": "Sociable",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'ambiguous'?",
+    "options": ["Clear", "Vague", "Obvious", "Simple"],
+    "answer": "Vague",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'candor'?",
+    "options": ["Honesty", "Lying", "Confusion", "Anger"],
+    "answer": "Honesty",
+    "difficulty": 2
+  },
+  {
+    "question": "Choose the antonym of 'benign'.",
+    "options": ["Kind", "Malevolent", "Gentle", "Friendly"],
+    "answer": "Malevolent",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'circumspect'?",
+    "options": ["Careful", "Reckless", "Lazy", "Angry"],
+    "answer": "Careful",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'elated'?",
+    "options": ["Happy", "Sad", "Angry", "Tired"],
+    "answer": "Happy",
+    "difficulty": 2
+  },
+  {
+    "question": "Antonym of 'diligent'?",
+    "options": ["Lazy", "Hardworking", "Careful", "Responsible"],
+    "answer": "Lazy",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'pragmatic'?",
+    "options": ["Practical", "Theoretical", "Impractical", "Lazy"],
+    "answer": "Practical",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'voracious'?",
+    "options": ["Hungry", "Full", "Lazy", "Sleepy"],
+    "answer": "Hungry",
+    "difficulty": 2
+  },
+  {
+    "question": "Choose the antonym of 'benevolent'.",
+    "options": ["Kind", "Malevolent", "Generous", "Friendly"],
+    "answer": "Malevolent",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'epistolary'?",
+    "options": ["Letter-based", "Book-based", "Music-based", "Speech-based"],
+    "answer": "Letter-based",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'loquacious'?",
+    "options": ["Talkative", "Quiet", "Silent", "Reserved"],
+    "answer": "Talkative",
+    "difficulty": 2
+  },
+  {
+    "question": "Meaning of 'mellifluous'?",
+    "options": ["Sweet sounding", "Harsh", "Rough", "Angry"],
+    "answer": "Sweet sounding",
+    "difficulty": 2
+  },
+  {
+    "question": "Choose the antonym of 'obdurate'.",
+    "options": ["Stubborn", "Flexible", "Rigid", "Strong"],
+    "answer": "Flexible",
+    "difficulty": 2
+  },
+  {
+    "question": "Synonym of 'penchant'?",
+    "options": ["Inclination", "Dislike", "Hate", "Fear"],
+    "answer": "Inclination",
+    "difficulty": 2
+  },
+
+  [
+  {
+    "question": "Meaning of 'parsimonious'?",
+    "options": ["Generous", "Stingy", "Angry", "Happy"],
+    "answer": "Stingy",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'epistolary' refer to?",
+    "options": ["Books", "Letters", "Music", "Paintings"],
+    "answer": "Letters",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'obsequious'?",
+    "options": ["Submissive", "Rebellious", "Independent", "Lazy"],
+    "answer": "Submissive",
+    "difficulty": 3
+  },
+  {
+    "question": "Synonym of 'recalcitrant'?",
+    "options": ["Compliant", "Resistant", "Happy", "Sad"],
+    "answer": "Resistant",
+    "difficulty": 3
+  },
+  {
+    "question": "Choose the word which means 'fear of water'.",
+    "options": ["Hydrophobia", "Agoraphobia", "Acrophobia", "Claustrophobia"],
+    "answer": "Hydrophobia",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'sesquipedalian'?",
+    "options": ["Using long words", "Short speech", "Lazy", "Simple"],
+    "answer": "Using long words",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'antediluvian' mean?",
+    "options": ["Ancient", "Modern", "Quick", "New"],
+    "answer": "Ancient",
+    "difficulty": 3
+  },
+  {
+    "question": "Synonym of 'insidious'?",
+    "options": ["Treacherous", "Obvious", "Simple", "Kind"],
+    "answer": "Treacherous",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'pulchritude'?",
+    "options": ["Beauty", "Ugliness", "Strength", "Weakness"],
+    "answer": "Beauty",
+    "difficulty": 3
+  },
+  {
+    "question": "Choose the word meaning 'difficult to understand'.",
+    "options": ["Esoteric", "Simple", "Easy", "Obvious"],
+    "answer": "Esoteric",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'intransigent'?",
+    "options": ["Uncompromising", "Flexible", "Weak", "Lazy"],
+    "answer": "Uncompromising",
+    "difficulty": 3
+  },
+  {
+    "question": "Synonym of 'perfidious'?",
+    "options": ["Treacherous", "Faithful", "Honest", "Kind"],
+    "answer": "Treacherous",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'rebarbative'?",
+    "options": ["Unattractive", "Beautiful", "Simple", "Kind"],
+    "answer": "Unattractive",
+    "difficulty": 3
+  },
+  {
+    "question": "Choose the word meaning 'excessively talkative'.",
+    "options": ["Loquacious", "Silent", "Quiet", "Lazy"],
+    "answer": "Loquacious",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'obstreperous'?",
+    "options": ["Noisy and difficult to control", "Silent", "Calm", "Lazy"],
+    "answer": "Noisy and difficult to control",
+    "difficulty": 3
+  },
+  {
+    "question": "Synonym of 'callipygian'?",
+    "options": ["Having shapely buttocks", "Lazy", "Tall", "Short"],
+    "answer": "Having shapely buttocks",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'taciturn'?",
+    "options": ["Reserved in speech", "Talkative", "Noisy", "Loud"],
+    "answer": "Reserved in speech",
+    "difficulty": 3
+  },
+  {
+    "question": "Choose the word meaning 'cheerfully optimistic'.",
+    "options": ["Sanguine", "Pessimistic", "Sad", "Lazy"],
+    "answer": "Sanguine",
+    "difficulty": 3
+  },
+  {
+    "question": "Meaning of 'obstreperous'?",
+    "options": ["Noisy", "Quiet", "Calm", "Friendly"],
+    "answer": "Noisy",
+    "difficulty": 3
+  },
+  {
+    "question": "Synonym of 'ignominious'?",
+    "options": ["Shameful", "Honorable", "Proud", "Kind"],
+    "answer": "Shameful",
+    "difficulty": 3
+  }
+]
+
+  
+]

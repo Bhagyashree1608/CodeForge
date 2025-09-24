@@ -1,0 +1,241 @@
+[
+  {
+    "question": "What does HTML stand for?",
+    "options": [
+      "Hypertext Markup Language",
+      "Home Tool Markup Language",
+      "Hyperlinks and Text Markup Language",
+      "Hyperlinking Text Mark Language"
+    ],
+    "answer": "Hypertext Markup Language",
+    "difficulty": 1
+  },
+  {
+    "question": "Which symbol is used for comments in JavaScript?",
+    "options": ["//", "<!-- -->", "#", "/* */"],
+    "answer": "//",
+    "difficulty": 1
+  },
+  {
+    "question": "Which language is primarily used for styling web pages?",
+    "options": ["HTML", "CSS", "JavaScript", "Python"],
+    "answer": "CSS",
+    "difficulty": 1
+  },
+  {
+    "question": "What does 'var' keyword do in JavaScript?",
+    "options": [
+      "Declares a variable",
+      "Declares a function",
+      "Creates a loop",
+      "None of the above"
+    ],
+    "answer": "Declares a variable",
+    "difficulty": 1
+  },
+  {
+    "question": "Which HTML tag is used to create a link?",
+    "options": ["<a>", "<link>", "<href>", "<anchor>"],
+    "answer": "<a>",
+    "difficulty": 1
+  },
+  {
+    "question": "How do you write an IF statement in JavaScript?",
+    "options": [
+      "if (condition) { }",
+      "if condition then",
+      "if: condition",
+      "if condition {}"
+    ],
+    "answer": "if (condition) { }",
+    "difficulty": 1
+  },
+  {
+    "question": "Which operator is used for strict equality in JavaScript?",
+    "options": ["==", "===", "=", "!="],
+    "answer": "===",
+    "difficulty": 1
+  },
+  {
+    "question": "Which tag is used for inserting an image in HTML?",
+    "options": ["<img>", "<image>", "<src>", "<picture>"],
+    "answer": "<img>",
+    "difficulty": 1
+  },
+  {
+    "question": "What does CSS stand for?",
+    "options": [
+      "Cascading Style Sheets",
+      "Creative Style Sheets",
+      "Computer Style Sheets",
+      "Colorful Style Sheets"
+    ],
+    "answer": "Cascading Style Sheets",
+    "difficulty": 1
+  },
+  {
+    "question": "Which method converts JSON string into a JavaScript object?",
+    "options": ["JSON.parse()", "JSON.stringify()", "JSON.object()", "JSON.convert()"],
+    "answer": "JSON.parse()",
+    "difficulty": 1
+  },
+
+  {
+    "question": "What is the correct syntax to create a function in JavaScript?",
+    "options": [
+      "function myFunc() {}",
+      "def myFunc() {}",
+      "func myFunc() {}",
+      "function:myFunc() {}"
+    ],
+    "answer": "function myFunc() {}",
+    "difficulty": 2
+  },
+  {
+    "question": "Which property is used to change the font in CSS?",
+    "options": ["font-family", "font-style", "text-style", "font-weight"],
+    "answer": "font-family",
+    "difficulty": 2
+  },
+  {
+    "question": "How can you add a comment in CSS?",
+    "options": ["/* comment */", "// comment", "<!-- comment -->", "# comment"],
+    "answer": "/* comment */",
+    "difficulty": 2
+  },
+  {
+    "question": "Which method adds an element at the end of an array in JavaScript?",
+    "options": ["push()", "pop()", "shift()", "unshift()"],
+    "answer": "push()",
+    "difficulty": 2
+  },
+  {
+    "question": "What is the difference between let and var in JavaScript?",
+    "options": [
+      "Scope: let is block scoped, var is function scoped",
+      "let is global, var is local",
+      "let is constant, var is variable",
+      "No difference"
+    ],
+    "answer": "Scope: let is block scoped, var is function scoped",
+    "difficulty": 2
+  },
+  {
+    "question": "Which HTML tag is used to define a table row?",
+    "options": ["<tr>", "<td>", "<table>", "<row>"],
+    "answer": "<tr>",
+    "difficulty": 2
+  },
+  {
+    "question": "What is the default value of an uninitialized variable in JavaScript?",
+    "options": ["undefined", "null", "0", "''"],
+    "answer": "undefined",
+    "difficulty": 2
+  },
+  {
+    "question": "Which CSS property is used to make text bold?",
+    "options": ["font-weight", "text-decoration", "font-style", "text-align"],
+    "answer": "font-weight",
+    "difficulty": 2
+  },
+  {
+    "question": "Which event occurs when the user clicks on an HTML element?",
+    "options": ["onclick", "onmouseclick", "onchange", "onmouseover"],
+    "answer": "onclick",
+    "difficulty": 2
+  },
+  {
+    "question": "Which HTML attribute specifies an alternate text for an image?",
+    "options": ["alt", "title", "src", "href"],
+    "answer": "alt",
+    "difficulty": 2
+  },
+  {
+    "question": "How do you declare a constant in JavaScript?",
+    "options": ["const PI = 3.14;", "let PI = 3.14;", "var PI = 3.14;", "constant PI = 3.14;"],
+    "answer": "const PI = 3.14;",
+    "difficulty": 2
+  },
+
+  {
+    "question": "What is a closure in JavaScript?",
+    "options": [
+      "A function having access to its outer scope variables",
+      "A variable inside a function",
+      "A block of code that loops",
+      "A class in JS"
+    ],
+    "answer": "A function having access to its outer scope variables",
+    "difficulty": 3
+  },
+  {
+    "question": "Which method is used to merge two arrays in JavaScript?",
+    "options": ["concat()", "merge()", "append()", "join()"],
+    "answer": "concat()",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'this' refer to in JavaScript?",
+    "options": [
+      "The object from which the function was called",
+      "Global object",
+      "The current function",
+      "Parent object"
+    ],
+    "answer": "The object from which the function was called",
+    "difficulty": 3
+  },
+  {
+    "question": "Which CSS property is used to change the text color?",
+    "options": ["color", "font-color", "text-color", "background-color"],
+    "answer": "color",
+    "difficulty": 3
+  },
+  {
+    "question": "Which HTML5 element is used to embed a video?",
+    "options": ["<video>", "<movie>", "<media>", "<play>"],
+    "answer": "<video>",
+    "difficulty": 3
+  },
+  {
+    "question": "What is the use of 'use strict' in JavaScript?",
+    "options": [
+      "Enforces stricter parsing and error handling",
+      "Makes code slower",
+      "Allows deprecated features",
+      "None of the above"
+    ],
+    "answer": "Enforces stricter parsing and error handling",
+    "difficulty": 3
+  },
+  {
+    "question": "How do you find the length of an array in JavaScript?",
+    "options": ["arr.length", "arr.size", "arr.count", "length(arr)"],
+    "answer": "arr.length",
+    "difficulty": 3
+  },
+  {
+    "question": "Which method removes the last element from an array in JavaScript?",
+    "options": ["pop()", "push()", "shift()", "unshift()"],
+    "answer": "pop()",
+    "difficulty": 3
+  },
+  {
+    "question": "Which HTML element defines the title of a document?",
+    "options": ["<title>", "<head>", "<meta>", "<h1>"],
+    "answer": "<title>",
+    "difficulty": 3
+  },
+  {
+    "question": "Which operator is used for logical AND in JavaScript?",
+    "options": ["&&", "||", "and", "&"],
+    "answer": "&&",
+    "difficulty": 3
+  },
+  {
+    "question": "Which method converts a JavaScript object to a JSON string?",
+    "options": ["JSON.stringify()", "JSON.parse()", "JSON.convert()", "JSON.object()"],
+    "answer": "JSON.stringify()",
+    "difficulty": 3
+  }
+]

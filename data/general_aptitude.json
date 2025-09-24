@@ -1,0 +1,316 @@
+[
+  {
+    "question": "If the sum of two numbers is 30 and one of the numbers is 12, what is the other number?",
+    "options": ["18", "20", "15", "12"],
+    "answer": "18",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is 25% of 200?",
+    "options": ["25", "50", "75", "100"],
+    "answer": "50",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If a book costs $15 and you buy 3 books, how much do you pay?",
+    "options": ["45", "30", "50", "60"],
+    "answer": "45",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "The perimeter of a square is 36 cm. What is the length of one side?",
+    "options": ["6 cm", "9 cm", "12 cm", "8 cm"],
+    "answer": "9 cm",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the next number in the series: 2, 4, 6, 8, ...?",
+    "options": ["10", "12", "9", "14"],
+    "answer": "10",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If a pen costs $2, how many pens can you buy with $10?",
+    "options": ["5", "4", "6", "8"],
+    "answer": "5",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A train travels at 60 km/h. How far will it go in 2 hours?",
+    "options": ["120 km", "100 km", "150 km", "90 km"],
+    "answer": "120 km",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 5 pencils cost $10, what is the cost of 1 pencil?",
+    "options": ["$1", "$2", "$3", "$5"],
+    "answer": "$2",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the value of 7 + 6?",
+    "options": ["12", "13", "14", "15"],
+    "answer": "13",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 3x = 12, what is x?",
+    "options": ["3", "4", "6", "8"],
+    "answer": "4",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A rectangle has length 10 cm and width 5 cm. What is its area?",
+    "options": ["50 cm²", "30 cm²", "15 cm²", "25 cm²"],
+    "answer": "50 cm²",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If a shop sells 20 apples and earns $40, what is the price of 1 apple?",
+    "options": ["$1", "$2", "$3", "$4"],
+    "answer": "$2",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is 10 minus 4?",
+    "options": ["4", "5", "6", "7"],
+    "answer": "6",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 10% of a number is 5, what is the number?",
+    "options": ["25", "50", "75", "100"],
+    "answer": "50",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is 9 x 3?",
+    "options": ["18", "27", "36", "30"],
+    "answer": "27",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If a car travels 30 km in 0.5 hours, what is its speed?",
+    "options": ["60 km/h", "50 km/h", "30 km/h", "45 km/h"],
+    "answer": "60 km/h",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is the next number in the series: 5, 10, 15, ...?",
+    "options": ["20", "25", "18", "22"],
+    "answer": "20",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "A box contains 10 chocolates. If you take 3, how many are left?",
+    "options": ["6", "7", "8", "10"],
+    "answer": "7",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If you divide 20 by 4, what is the result?",
+    "options": ["4", "5", "6", "8"],
+    "answer": "5",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "What is 15 + 5?",
+    "options": ["15", "20", "25", "30"],
+    "answer": "20",
+    "difficulty": "Easy"
+  },
+  
+  {
+    "question": "If a shopkeeper gives a discount of 10% on $200, how much is the discounted price?",
+    "options": ["$180", "$190", "$200", "$210"],
+    "answer": "$180",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A train travels 150 km in 3 hours. What is its average speed?",
+    "options": ["40 km/h", "50 km/h", "60 km/h", "70 km/h"],
+    "answer": "50 km/h",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If the ratio of two numbers is 2:3 and their sum is 25, what is the smaller number?",
+    "options": ["10", "12", "15", "8"],
+    "answer": "10",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The sum of the angles in a triangle is?",
+    "options": ["90°", "180°", "270°", "360°"],
+    "answer": "180°",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A shop sells 3 pens for $5. How much for 9 pens?",
+    "options": ["$10", "$15", "$20", "$25"],
+    "answer": "$15",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A train departs at 9:00 AM and arrives at 1:00 PM. How long is the journey?",
+    "options": ["3 hrs", "4 hrs", "5 hrs", "6 hrs"],
+    "answer": "4 hrs",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If x + 3 = 7, what is x?",
+    "options": ["3", "4", "5", "6"],
+    "answer": "4",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The product of 7 and 8 is?",
+    "options": ["54", "56", "58", "60"],
+    "answer": "56",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If a box has 12 apples and you take 3, what fraction remains?",
+    "options": ["3/4", "1/4", "2/3", "1/3"],
+    "answer": "3/4",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A man buys 5 shirts for $50. What is the cost per shirt?",
+    "options": ["$5", "$10", "$15", "$20"],
+    "answer": "$10",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If 60% of students passed an exam and there are 50 students, how many passed?",
+    "options": ["20", "25", "30", "35"],
+    "answer": "30",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "What is the area of a rectangle with length 8 cm and width 5 cm?",
+    "options": ["40 cm²", "30 cm²", "35 cm²", "45 cm²"],
+    "answer": "40 cm²",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If 3/4 of a number is 15, what is the number?",
+    "options": ["15", "20", "25", "30"],
+    "answer": "20",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "The average of 5, 10, 15, 20, 25 is?",
+    "options": ["10", "15", "20", "25"],
+    "answer": "15",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If a shop sells 10 pens at $2 each, total cost is?",
+    "options": ["$10", "$15", "$20", "$25"],
+    "answer": "$20",
+    "difficulty": "Medium"
+  },
+  
+  {
+    "question": "A train travels at 90 km/h for 2 hours and 30 minutes. How far does it go?",
+    "options": ["200 km", "225 km", "250 km", "275 km"],
+    "answer": "225 km",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If x² = 49, what is x?",
+    "options": ["5", "6", "7", "8"],
+    "answer": "7",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A car travels 120 km at 60 km/h and 180 km at 90 km/h. What is average speed?",
+    "options": ["72 km/h", "75 km/h", "78 km/h", "80 km/h"],
+    "answer": "75 km/h",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The sum of first 10 natural numbers is?",
+    "options": ["45", "50", "55", "60"],
+    "answer": "55",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 5x + 3 = 28, what is x?",
+    "options": ["4", "5", "6", "7"],
+    "answer": "5",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A rectangle has perimeter 50 cm and length 15 cm. What is width?",
+    "options": ["10 cm", "12 cm", "20 cm", "25 cm"],
+    "answer": "10 cm",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 40% of a number is 24, what is the number?",
+    "options": ["50", "60", "70", "80"],
+    "answer": "60",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The difference between 200 and 75 is?",
+    "options": ["100", "125", "150", "175"],
+    "answer": "125",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If x + y = 15 and x - y = 5, what is x?",
+    "options": ["5", "7.5", "10", "12.5"],
+    "answer": "10",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The cube of 3 is?",
+    "options": ["9", "18", "27", "36"],
+    "answer": "27",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 3/5 of a number is 12, what is the number?",
+    "options": ["15", "18", "20", "25"],
+    "answer": "20",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A train covers 360 km in 4 hours. What is speed?",
+    "options": ["80 km/h", "85 km/h", "90 km/h", "95 km/h"],
+    "answer": "90 km/h",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The sum of angles in a quadrilateral is?",
+    "options": ["180°", "360°", "270°", "540°"],
+    "answer": "360°",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If a number is increased by 20%, the new number is 60. What is original number?",
+    "options": ["45", "48", "50", "52"],
+    "answer": "50",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "The product of 12 and 9 is?",
+    "options": ["108", "110", "112", "120"],
+    "answer": "108",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 5x - 7 = 18, what is x?",
+    "options": ["4", "5", "6", "7"],
+    "answer": "5",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A circle has radius 7 cm. What is area?",
+    "options": ["154 cm²", "140 cm²", "150 cm²", "160 cm²"],
+    "answer": "154 cm²",
+    "difficulty": "Hard"
+  }
+]

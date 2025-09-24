@@ -1,0 +1,411 @@
+[
+ 
+  {
+    "question": "What does ROI stand for?",
+    "options": ["Rate of Investment", "Return on Income", "Return on Investment", "Revenue on Investment"],
+    "answer": "Return on Investment",
+    "difficulty": 1
+  },
+  {
+    "question": "Which is a short-term investment?",
+    "options": ["Stocks", "Bonds", "Treasury Bills", "Real Estate"],
+    "answer": "Treasury Bills",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a mutual fund?",
+    "options": ["A bank account", "A pooled investment vehicle", "A type of loan", "Insurance"],
+    "answer": "A pooled investment vehicle",
+    "difficulty": 1
+  },
+  {
+    "question": "Which financial statement shows company's profit?",
+    "options": ["Balance Sheet", "Income Statement", "Cash Flow Statement", "Ledger"],
+    "answer": "Income Statement",
+    "difficulty": 1
+  },
+  {
+    "question": "What does 'liquidity' mean in finance?",
+    "options": ["How easily assets can be converted to cash", "Long-term profit", "Market share", "Debt level"],
+    "answer": "How easily assets can be converted to cash",
+    "difficulty": 1
+  },
+  {
+    "question": "Which of the following is a current asset?",
+    "options": ["Cash", "Machinery", "Land", "Buildings"],
+    "answer": "Cash",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a bond?",
+    "options": ["A loan made to a company or government", "A stock", "A type of insurance", "A mutual fund"],
+    "answer": "A loan made to a company or government",
+    "difficulty": 1
+  },
+  {
+    "question": "Which account shows the company’s financial position at a specific point?",
+    "options": ["Income Statement", "Balance Sheet", "Cash Flow Statement", "Ledger"],
+    "answer": "Balance Sheet",
+    "difficulty": 1
+  },
+  {
+    "question": "What is equity in finance?",
+    "options": ["Ownership in a company", "Debt of a company", "Interest paid", "Revenue earned"],
+    "answer": "Ownership in a company",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a dividend?",
+    "options": ["Company profit shared with shareholders", "Company debt", "Company expenses", "Tax paid by company"],
+    "answer": "Company profit shared with shareholders",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a stock?",
+    "options": ["Ownership in a company", "Company loan", "Bond", "Mutual Fund"],
+    "answer": "Ownership in a company",
+    "difficulty": 1
+  },
+  {
+    "question": "Which financial statement shows cash inflows and outflows?",
+    "options": ["Balance Sheet", "Income Statement", "Cash Flow Statement", "Ledger"],
+    "answer": "Cash Flow Statement",
+    "difficulty": 1
+  },
+  {
+    "question": "What does 'asset' mean?",
+    "options": ["Anything owned with value", "Debt owed", "Expense", "Revenue"],
+    "answer": "Anything owned with value",
+    "difficulty": 1
+  },
+  {
+    "question": "Which is a fixed asset?",
+    "options": ["Land", "Cash", "Inventory", "Accounts Receivable"],
+    "answer": "Land",
+    "difficulty": 1
+  },
+  {
+    "question": "What is a company’s revenue?",
+    "options": ["Total income from sales", "Net profit", "Debt", "Assets"],
+    "answer": "Total income from sales",
+    "difficulty": 1
+  },
+  {
+    "question": "What is an expense?",
+    "options": ["Money spent to operate business", "Company income", "Asset", "Liability"],
+    "answer": "Money spent to operate business",
+    "difficulty": 1
+  },
+  {
+    "question": "What does 'capital' mean?",
+    "options": ["Money invested in business", "Profit earned", "Revenue", "Debt"],
+    "answer": "Money invested in business",
+    "difficulty": 1
+  },
+  {
+    "question": "Which is an example of long-term liability?",
+    "options": ["Mortgage", "Accounts Payable", "Salary Payable", "Utility Bills"],
+    "answer": "Mortgage",
+    "difficulty": 1
+  },
+  {
+    "question": "Which statement is true about stocks?",
+    "options": ["Stocks represent ownership", "Stocks are loans", "Stocks are insurance policies", "Stocks are assets held by company only"],
+    "answer": "Stocks represent ownership",
+    "difficulty": 1
+  },
+  {
+    "question": "Which investment is considered least risky?",
+    "options": ["Government bonds", "Stocks", "Real Estate", "Cryptocurrency"],
+    "answer": "Government bonds",
+    "difficulty": 1
+  },
+
+  {
+    "question": "What is the beta of a stock?",
+    "options": ["Volatility compared to market", "Return on investment", "Dividend yield", "Book value"],
+    "answer": "Volatility compared to market",
+    "difficulty": 2
+  },
+  {
+    "question": "Which instrument is considered risk-free?",
+    "options": ["Corporate Bonds", "Treasury Bonds", "Stocks", "Mutual Funds"],
+    "answer": "Treasury Bonds",
+    "difficulty": 2
+  },
+  {
+    "question": "What is a P/E ratio?",
+    "options": ["Price/Earnings ratio", "Profit/Earnings ratio", "Price/Efficiency ratio", "Profit/Efficiency ratio"],
+    "answer": "Price/Earnings ratio",
+    "difficulty": 2
+  },
+  {
+    "question": "What is a diversified portfolio?",
+    "options": [
+      "Investing in a single asset",
+      "Spreading investments across different assets",
+      "Borrowing money to invest",
+      "Investing in cryptocurrencies only"
+    ],
+    "answer": "Spreading investments across different assets",
+    "difficulty": 2
+  },
+  {
+    "question": "What is 'market capitalization'?",
+    "options": [
+      "Total sales of a company",
+      "Total value of all shares outstanding",
+      "Company debt",
+      "Total assets"
+    ],
+    "answer": "Total value of all shares outstanding",
+    "difficulty": 2
+  },
+  {
+    "question": "Which financial metric measures company efficiency?",
+    "options": ["ROA", "ROI", "EPS", "P/E Ratio"],
+    "answer": "ROA",
+    "difficulty": 2
+  },
+  {
+    "question": "What is 'working capital'?",
+    "options": ["Current assets minus current liabilities", "Debt", "Equity", "Revenue"],
+    "answer": "Current assets minus current liabilities",
+    "difficulty": 2
+  },
+  {
+    "question": "Which instrument is short-term?",
+    "options": ["Treasury Bills", "Corporate Bonds", "Stocks", "Real Estate"],
+    "answer": "Treasury Bills",
+    "difficulty": 2
+  },
+  {
+    "question": "What does EPS stand for?",
+    "options": ["Earnings per Share", "Equity per Stock", "Expense per Sale", "Earnings per Stock"],
+    "answer": "Earnings per Share",
+    "difficulty": 2
+  },
+  {
+    "question": "What is the current ratio?",
+    "options": ["Current assets / current liabilities", "Revenue / expense", "Equity / Debt", "Profit / Assets"],
+    "answer": "Current assets / current liabilities",
+    "difficulty": 2
+  },
+  {
+    "question": "What is liquidity risk?",
+    "options": ["Risk of not being able to convert assets into cash", "Risk of losing stock value", "Risk of interest rate change", "Risk of inflation"],
+    "answer": "Risk of not being able to convert assets into cash",
+    "difficulty": 2
+  },
+  {
+    "question": "What is the significance of debt-to-equity ratio?",
+    "options": ["Measures financial leverage", "Measures profit", "Measures liquidity", "Measures investment risk"],
+    "answer": "Measures financial leverage",
+    "difficulty": 2
+  },
+  {
+    "question": "Which type of bond has the highest risk?",
+    "options": ["Junk Bonds", "Government Bonds", "Corporate Bonds", "Treasury Bonds"],
+    "answer": "Junk Bonds",
+    "difficulty": 2
+  },
+  {
+    "question": "What is a callable bond?",
+    "options": ["A bond that can be redeemed early by issuer", "A bond that never matures", "A bond with fixed interest", "A zero-coupon bond"],
+    "answer": "A bond that can be redeemed early by issuer",
+    "difficulty": 2
+  },
+  {
+    "question": "What does CAGR mean?",
+    "options": ["Compound Annual Growth Rate", "Current Annual Growth Rate", "Company Annual Growth Ratio", "Capital Average Growth Rate"],
+    "answer": "Compound Annual Growth Rate",
+    "difficulty": 2
+  },
+  {
+    "question": "What is the significance of ROI?",
+    "options": ["Measures efficiency of investment", "Measures debt level", "Measures liquidity", "Measures revenue growth"],
+    "answer": "Measures efficiency of investment",
+    "difficulty": 2
+  },
+  {
+    "question": "Which is a mid-cap stock?",
+    "options": ["Company with market capitalization between $2B-$10B", "Company with market cap above $10B", "Company below $2B", "Company in cryptocurrency"],
+    "answer": "Company with market capitalization between $2B-$10B",
+    "difficulty": 2
+  },
+  {
+    "question": "Which type of mutual fund invests in bonds?",
+    "options": ["Debt Fund", "Equity Fund", "Balanced Fund", "Index Fund"],
+    "answer": "Debt Fund",
+    "difficulty": 2
+  },
+  {
+    "question": "What does 'alpha' measure in finance?",
+    "options": ["Performance relative to market benchmark", "Profit ratio", "Debt ratio", "Liquidity ratio"],
+    "answer": "Performance relative to market benchmark",
+    "difficulty": 2
+  },
+  {
+    "question": "Which is a growth investment?",
+    "options": ["Stocks", "Treasury Bills", "Bank Deposit", "Insurance Policy"],
+    "answer": "Stocks",
+    "difficulty": 2
+  },
+
+
+  {
+    "question": "What is leverage in finance?",
+    "options": ["Using borrowed funds to increase return", "Diversifying assets", "Investing in stocks", "Saving money"],
+    "answer": "Using borrowed funds to increase return",
+    "difficulty": 3
+  },
+  {
+    "question": "Which ratio indicates a company’s ability to pay short-term obligations?",
+    "options": ["Liquidity Ratio", "Debt-Equity Ratio", "P/E Ratio", "Return on Equity"],
+    "answer": "Liquidity Ratio",
+    "difficulty": 3
+  },
+  {
+    "question": "What is an ETF?",
+    "options": ["Equity Traded Fund", "Exchange Traded Fund", "Electronic Transfer Fund", "Economic Trade Fund"],
+    "answer": "Exchange Traded Fund",
+    "difficulty": 3
+  },
+  {
+    "question": "What is the meaning of 'derivatives'?",
+    "options": ["Stocks", "Financial instruments based on underlying assets", "Bonds", "Cash"],
+    "answer": "Financial instruments based on underlying assets",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'dividend yield' measure?",
+    "options": [
+      "Annual dividend / stock price",
+      "Profit / equity",
+      "Debt / assets",
+      "Revenue growth"
+    ],
+    "answer": "Annual dividend / stock price",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'capital gain'?",
+    "options": ["Profit from sale of asset", "Loss from investment", "Dividend income", "Interest income"],
+    "answer": "Profit from sale of asset",
+    "difficulty": 3
+  },
+  {
+    "question": "Which is a measure of systematic risk?",
+    "options": ["Beta", "Alpha", "Standard deviation", "Sharpe ratio"],
+    "answer": "Beta",
+    "difficulty": 3
+  },
+  {
+    "question": "What is the primary goal of portfolio management?",
+    "options": ["Maximize returns for given risk", "Minimize taxes", "Invest only in stocks", "Hold cash only"],
+    "answer": "Maximize returns for given risk",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'arbitrage' in finance?",
+    "options": ["Profiting from price differences in markets", "Investing in a single asset", "Paying taxes early", "Borrowing funds"],
+    "answer": "Profiting from price differences in markets",
+    "difficulty": 3
+  },
+  {
+    "question": "What is the 'Sharpe ratio' used for?",
+    "options": ["Risk-adjusted return", "Debt management", "Liquidity", "Tax planning"],
+    "answer": "Risk-adjusted return",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'capital structure'?",
+    "options": ["Mix of debt and equity financing", "Company’s cash balance", "Profit margin", "Investment portfolio"],
+    "answer": "Mix of debt and equity financing",
+    "difficulty": 3
+  },
+  {
+    "question": "Which is considered a long-term investment?",
+    "options": ["Stocks", "Treasury Bills", "Savings account", "Options"],
+    "answer": "Stocks",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'ROI' measure?",
+    "options": ["Return on Investment", "Rate of Interest", "Revenue of Industry", "Risk of Investment"],
+    "answer": "Return on Investment",
+    "difficulty": 3
+  },
+  {
+    "question": "What is the role of a 'mutual fund manager'?",
+    "options": ["Invest pooled money to maximize returns", "Handle bank transactions", "Audit financial statements", "Collect taxes"],
+    "answer": "Invest pooled money to maximize returns",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'systematic risk'?",
+    "options": ["Market-wide risk", "Individual stock risk", "Operational risk", "Liquidity risk"],
+    "answer": "Market-wide risk",
+    "difficulty": 3
+  },
+  {
+    "question": "What is a 'hedge fund'?",
+    "options": ["Investment fund using advanced strategies", "Bank account", "Insurance policy", "Government bond"],
+    "answer": "Investment fund using advanced strategies",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'working capital'?",
+    "options": ["Current assets minus current liabilities", "Total revenue", "Net income", "Total debt"],
+    "answer": "Current assets minus current liabilities",
+    "difficulty": 3
+  },
+  {
+    "question": "Which instrument is least liquid?",
+    "options": ["Real Estate", "Stocks", "Treasury Bonds", "Mutual Funds"],
+    "answer": "Real Estate",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'diversification'?",
+    "options": ["Spreading investments across assets", "Investing in one asset", "Borrowing money", "Paying taxes early"],
+    "answer": "Spreading investments across assets",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'inflation'?",
+    "options": ["Increase in prices over time", "Decrease in asset value", "Debt repayment", "Company profit"],
+    "answer": "Increase in prices over time",
+    "difficulty": 3
+  },
+  {
+    "question": "What does 'depreciation' mean?",
+    "options": ["Reduction in asset value over time", "Company profit", "Market growth", "Debt increase"],
+    "answer": "Reduction in asset value over time",
+    "difficulty": 3
+  },
+  {
+    "question": "What is a 'blue-chip stock'?",
+    "options": ["Established, financially stable company", "New startup", "High-risk company", "Government bond"],
+    "answer": "Established, financially stable company",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'credit rating'?",
+    "options": ["Measure of borrower’s creditworthiness", "Company profit", "Market share", "Stock price"],
+    "answer": "Measure of borrower’s creditworthiness",
+    "difficulty": 3
+  },
+  {
+    "question": "Which ratio measures profitability?",
+    "options": ["Return on Equity (ROE)", "Debt-Equity Ratio", "Liquidity Ratio", "Current Ratio"],
+    "answer": "Return on Equity (ROE)",
+    "difficulty": 3
+  },
+  {
+    "question": "What is 'capital budgeting'?",
+    "options": ["Process of evaluating long-term investments", "Daily cash management", "Debt collection", "Short-term trading"],
+    "answer": "Process of evaluating long-term investments",
+    "difficulty": 3
+  }
+]

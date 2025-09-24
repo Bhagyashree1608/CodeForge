@@ -1,0 +1,218 @@
+[
+  {
+    "question": "Find the next number in the series: 2, 4, 8, 16, ...?",
+    "options": ["18", "20", "32", "24"],
+    "answer": "32",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If all roses are flowers and some flowers fade quickly, then some roses fade quickly. True or False?",
+    "options": ["True", "False", "Cannot say", "None"],
+    "answer": "Cannot say",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If John is taller than Mary and Mary is taller than Sam, who is the shortest?",
+    "options": ["John", "Mary", "Sam", "Cannot determine"],
+    "answer": "Sam",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the missing number: 5, 10, 15, ?, 25",
+    "options": ["18", "20", "22", "30"],
+    "answer": "20",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If Monday is the first day of the week, what day comes 3 days after Tuesday?",
+    "options": ["Friday", "Thursday", "Wednesday", "Saturday"],
+    "answer": "Friday",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Which shape completes the pattern: Circle, Triangle, Circle, Triangle, ...?",
+    "options": ["Circle", "Triangle", "Square", "Rectangle"],
+    "answer": "Circle",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If A > B and B > C, then A > C. True or False?",
+    "options": ["True", "False", "Cannot say", "None"],
+    "answer": "True",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Find the odd one out: Apple, Banana, Carrot, Mango",
+    "options": ["Apple", "Banana", "Carrot", "Mango"],
+    "answer": "Carrot",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If 3 pencils cost $6, how much for 5 pencils?",
+    "options": ["$8", "$10", "$12", "$15"],
+    "answer": "$10",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "Complete the analogy: Dog : Bark :: Cat : ?",
+    "options": ["Meow", "Moo", "Neigh", "Quack"],
+    "answer": "Meow",
+    "difficulty": "Easy"
+  },
+  {
+    "question": "If a cube has 6 faces, how many faces are visible from one corner?",
+    "options": ["1", "2", "3", "4"],
+    "answer": "3",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the missing number: 2, 6, 12, 20, ?",
+    "options": ["28", "30", "32", "24"],
+    "answer": "30",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If P + Q = 15 and P - Q = 5, what is P?",
+    "options": ["5", "10", "12", "8"],
+    "answer": "10",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which is the next in series: 1, 4, 9, 16, 25, ?",
+    "options": ["30", "36", "40", "49"],
+    "answer": "36",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the odd one out: 2, 3, 5, 7, 9",
+    "options": ["2", "3", "5", "9"],
+    "answer": "9",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If all pencils are pens and all pens are erasers, are all pencils erasers?",
+    "options": ["Yes", "No", "Cannot say", "None"],
+    "answer": "Yes",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "A cube is painted on all sides and then cut into 64 smaller cubes. How many small cubes have paint on 3 sides?",
+    "options": ["8", "12", "16", "24"],
+    "answer": "8",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the missing number: 7, 14, 28, ?, 112",
+    "options": ["42", "56", "64", "70"],
+    "answer": "56",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Which of the following is a mirror image of 'BCD'?",
+    "options": ["DCB", "DBC", "BCD", "CDB"],
+    "answer": "DCB",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "If 3x + 5 = 20, what is x?",
+    "options": ["3", "5", "7", "15"],
+    "answer": "5",
+    "difficulty": "Medium"
+  },
+  {
+    "question": "Find the next number: 2, 6, 12, 20, 30, ?",
+    "options": ["36", "40", "42", "48"],
+    "answer": "42",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A clock shows 3:15. What is the angle between hour and minute hands?",
+    "options": ["0°", "7.5°", "15°", "10°"],
+    "answer": "7.5°",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 5x - 3 = 2x + 6, what is x?",
+    "options": ["2", "3", "4", "5"],
+    "answer": "3",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the odd one out: 121, 144, 169, 196, 210",
+    "options": ["121", "144", "196", "210"],
+    "answer": "210",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A cube has volume 64 cm³. What is the length of one side?",
+    "options": ["2 cm", "3 cm", "4 cm", "5 cm"],
+    "answer": "4 cm",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If x² + 5x + 6 = 0, what is one value of x?",
+    "options": ["-2", "-3", "2", "3"],
+    "answer": "-2",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the next number: 1, 1, 2, 6, 24, ?",
+    "options": ["120", "24", "120", "720"],
+    "answer": "120",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If all pens are pencils and some pencils are erasers, are some pens erasers?",
+    "options": ["Yes", "No", "Cannot say", "None"],
+    "answer": "Cannot say",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If 7x + 3 = 31, what is x?",
+    "options": ["4", "5", "6", "7"],
+    "answer": "4",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the missing number: 3, 9, 27, 81, ?",
+    "options": ["162", "243", "324", "256"],
+    "answer": "243",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Which of the following completes the series: 2, 3, 5, 8, 12, ?",
+    "options": ["17", "18", "19", "20"],
+    "answer": "17",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If a clock is 15 minutes fast, and it shows 3:15, what is actual time?",
+    "options": ["3:00", "3:10", "3:15", "3:30"],
+    "answer": "3:00",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "A man walks 3 km north, 4 km east. How far is he from start?",
+    "options": ["5 km", "6 km", "7 km", "8 km"],
+    "answer": "5 km",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "If x/2 + 5 = 15, what is x?",
+    "options": ["10", "15", "20", "25"],
+    "answer": "20",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Find the next number in the series: 1, 4, 9, 16, 25, 36, ?",
+    "options": ["42", "48", "49", "50"],
+    "answer": "49",
+    "difficulty": "Hard"
+  },
+  {
+    "question": "Which shape comes next: square, circle, triangle, square, circle, ?",
+    "options": ["Triangle", "Square", "Circle", "Rectangle"],
+    "answer": "Triangle",
+    "difficulty": "Hard"
+  }
+]
